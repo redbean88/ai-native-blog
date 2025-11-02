@@ -16,7 +16,7 @@ export default function AuthorProfile({ author }: AuthorProfileProps) {
           className="h-16 w-16 rounded-full object-cover"
         />
         <div className="flex-1">
-          <h3 className="text-lg font-bold text-gray-900">{author.name}</h3>
+          <h3 className="text-lg font-bold text-gray-900">{author.name} Sir</h3>
           <p className="mt-1 text-sm text-gray-600">{author.bio}</p>
         </div>
       </div>
