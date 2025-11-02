@@ -66,18 +66,17 @@ function slugify(str) {
 
 function createHeading(level) {
   const Heading = ({ children }) => {
-    let slug = slugify(children)
-    return React.createElement(
-      `h${level}`,
-      { id: slug },
-      [
-        React.createElement('a', {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: 'anchor',
-        }),
-      ],
-      children
+    // children을 문자열로 변환하여 slug 생성
+    const textContent = typeof children === 'string' 
+      ? children 
+      : React.Children.toArray(children).join('')
+    let slug = slugify(textContent)
+    const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements
+    return (
+      <HeadingTag id={slug}>
+        <a href={`#${slug}`} className="anchor" />
+        {children}
+      </HeadingTag>
     )
   }
 
